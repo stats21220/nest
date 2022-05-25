@@ -17,12 +17,12 @@ export class ReviewController {
 	async delete(@Param('id') id: string) {
 		const deleteDoc = await this.reviewService.delete(id);
 		if (!deleteDoc) {
-			throw  new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
+			throw new HttpException(REVIEW_NOT_FOUND, HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@Get('byProduct/:productId')
 	async getByProduct(@Param('productId') productId: string) {
-		await this.reviewService.findByProductId(productId);
+		return await this.reviewService.findByProductId(productId);
 	}
 }
