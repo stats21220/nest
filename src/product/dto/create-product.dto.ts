@@ -40,7 +40,7 @@ export class CreateProductDto {
 	categories: string[];
 
 	@IsArray()
-	@IsString({each: true)
+	@IsString({each: true})
 	tags: string[];
 
 	@IsArray()
