@@ -1,4 +1,4 @@
-name: Publish Docker top-api
+name: Publish Docker
 
 on:
   push:
