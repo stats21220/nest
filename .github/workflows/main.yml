@@ -2,7 +2,8 @@ name: Publish Docker
 
 on:
   push:
-    branches: [master]
+    branches: 
+      - master
 
 jobs:
   build:
@@ -16,4 +17,5 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           buildargs: MY_FIRST,MY_SECOND
+          buildoptions: "--compress --force-rm"
           tags: "develop"
