@@ -16,7 +16,10 @@ jobs:
         with:
           repository: stats21220/nest
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats21220/nest/nest
+          name: docker.pkg.github.com/stats21220/nest/top-api
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          default_branch: trunk
+          workdir: ./opt/app
+          buildoptions: docker build -t top-api ./
           tags: 'develop'
