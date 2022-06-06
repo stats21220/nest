@@ -1,20 +1,21 @@
-import {Test, TestingModule} from '@nestjs/testing';
-import {INestApplication} from '@nestjs/common';
+import { Test, TestingModule } from '@nestjs/testing';
+import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import {AppModule} from '../src/app.module';
-import {disconnect} from 'mongoose';
-import {AuthDto} from '../src/auth/dto/auth.dto';
+import { AppModule } from './../src/app.module';
+import { disconnect } from 'mongoose';
+import { AuthDto } from 'src/auth/dto/auth.dto';
 
-const loginDTO: AuthDto = {
-	login: 'stas@mail.com',
-	password: '123'
+const loginDto: AuthDto = {
+	login: 'a@a.ru',
+	password: '1'
 };
-
 
 describe('AuthController (e2e)', () => {
 	let app: INestApplication;
+	let createdId: string;
+	let token: string;
 
-	beforeEach(async() => {
+	beforeEach(async () => {
 		const moduleFixture: TestingModule = await Test.createTestingModule({
 			imports: [AppModule],
 		}).compile();
@@ -23,35 +24,36 @@ describe('AuthController (e2e)', () => {
 		await app.init();
 	});
 
-	it(`/auth/login (POST) - success`, async() => {
+	it('/auth/login (POST) - success', async (done) => {
 		return request(app.getHttpServer())
 			.post('/auth/login')
-			.send(loginDTO)
+			.send(loginDto)
 			.expect(200)
-			.then(({body}: request.Response) => {
+			.then(({ body }: request.Response) => {
 				expect(body.access_token).toBeDefined();
+				done();
 			});
 	});
 
-	it(`/auth/login (POST) - fail login`, () => {
+	it('/auth/login (POST) - fail password', () => {
 		return request(app.getHttpServer())
 			.post('/auth/login')
-			.send({...loginDTO, login: 'error@mail.com'})
+			.send({ ...loginDto, password: '2' })
 			.expect(401, {
 				statusCode: 401,
-				message: 'Пользоваетель с таким email не найден',
-				error: 'Unauthorized'
+				message: "Неверный пароль",
+				error: "Unauthorized"
 			});
 	});
 
-	it(`/auth/login (POST) - fail password`, () => {
+	it('/auth/login (POST) - fail password', () => {
 		return request(app.getHttpServer())
 			.post('/auth/login')
-			.send({...loginDTO, password: '666'})
+			.send({ ...loginDto, login: 'aaa@a.ru' })
 			.expect(401, {
 				statusCode: 401,
-				message: 'не верный пароль',
-				error: 'Unauthorized'
+				message: "Пользователь с таким email не найден",
+				error: "Unauthorized"
 			});
 	});
 

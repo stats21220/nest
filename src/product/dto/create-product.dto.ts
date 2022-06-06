@@ -1,7 +1,7 @@
-import {IsArray, IsNumber, IsOptional, IsString, ValidateNested} from 'class-validator';
-import {Type} from 'class-transformer';
+import { Type } from 'class-transformer';
+import { IsNumber, IsString, IsOptional, ValidateNested, IsArray, Max, Min } from 'class-validator';
 
-export class ProductCharacteristicDto {
+class ProductCharacteristicDto {
 	@IsString()
 	name: string;
 
@@ -15,6 +15,14 @@ export class CreateProductDto {
 
 	@IsString()
 	title: string;
+
+	@IsString()
+	link: string;
+
+	@Max(5)
+	@Min(1)
+	@IsNumber()
+	initialRating: number;
 
 	@IsNumber()
 	price: number;
@@ -32,15 +40,16 @@ export class CreateProductDto {
 	@IsString()
 	advantages: string;
 
+	@IsOptional()
 	@IsString()
-	disAdvantages: string;
+	disAdvantages?: string;
 
 	@IsArray()
-	@IsString({each: true})
+	@IsString({ each: true })
 	categories: string[];
 
 	@IsArray()
-	@IsString({each: true})
+	@IsString({ each: true })
 	tags: string[];
 
 	@IsArray()
@@ -48,3 +57,4 @@ export class CreateProductDto {
 	@Type(() => ProductCharacteristicDto)
 	characteristics: ProductCharacteristicDto[];
 }
+

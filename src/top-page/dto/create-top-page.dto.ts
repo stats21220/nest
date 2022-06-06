@@ -1,14 +1,6 @@
-import {IsNumber, IsString, IS_ENUM, IsEnum, IsArray, ValidateNested, IsOptional} from 'class-validator';
-import {Type} from 'class-transformer';
-import {TopLevelCategory} from '../top-page.model';
-
-export class TopPageAdvantage {
-	@IsString()
-	title: string;
-
-	@IsString()
-	description: string;
-}
+import { Type } from 'class-transformer';
+import { IsArray, IsEnum, IsNumber, IsOptional, IsString, ValidateNested } from 'class-validator';
+import { TopLevelCategory } from '../top-page.model';
 
 export class HhDataDto {
 	@IsNumber()
@@ -22,6 +14,14 @@ export class HhDataDto {
 
 	@IsNumber()
 	seniorSalary: number;
+}
+
+export class TopPageAdvantageDto {
+	@IsString()
+	title: string;
+
+	@IsString()
+	description: string;
 }
 
 export class CreateTopPageDto {
@@ -38,17 +38,23 @@ export class CreateTopPageDto {
 	title: string;
 
 	@IsString()
-	category: string;
+	metaTitle: string;
 
-	@IsArray()
-	@ValidateNested()
-	@Type(() => TopPageAdvantage)
-	advantages: TopPageAdvantage[];
+	@IsString()
+	metaDescription: string;
+
+	@IsString()
+	category: string;
 
 	@IsOptional()
 	@ValidateNested()
 	@Type(() => HhDataDto)
 	hh?: HhDataDto;
+
+	@IsArray()
+	@ValidateNested()
+	@Type(() => TopPageAdvantageDto)
+	advantages: TopPageAdvantageDto[];
 
 	@IsString()
 	seoText: string;
@@ -57,6 +63,6 @@ export class CreateTopPageDto {
 	tagsTitle: string;
 
 	@IsArray()
-	@IsString({each: true})
+	@IsString({ each: true })
 	tags: string[];
 }
