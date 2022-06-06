@@ -4,18 +4,19 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@master
       - name: Publish to registry
-        uses: elgohr/Publish-Docker-Github-Action@v4
+        uses: elgohr/Publish-Docker-Github-Action@master
         with:
+          repository: stats21220/nest
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats21220/nest/top-api
+          name: docker.pkg.github.com/stats21220/nest/nest
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: 'develops'
+          tags: 'develop'
