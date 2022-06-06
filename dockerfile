@@ -1,4 +1,5 @@
-FROM node:14-alpine
+FROM node:16-alpine
+WORKDIR ./
 ADD package.json package.json
 RUN npm install --force
 ADD . .
