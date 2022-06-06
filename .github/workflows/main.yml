@@ -4,7 +4,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: main
     - name: Publish to Registry2
       uses: elgohr/Publish-Docker-Github-Action@main
       with:
