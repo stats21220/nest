@@ -5,4 +5,4 @@ RUN npm install --force
 ADD . .
 RUN npm run build
 RUN npm prune --production
-CMD ["node", "./dist/main.js"]
+CMD ["node", "./opt/app/dist/main.js"]
