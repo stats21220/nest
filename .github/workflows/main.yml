@@ -4,9 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@latest
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@v2
+      uses: elgohr/Publish-Docker-Github-Action@latest
       with:
         registry: ghcr.io
         name: ghrc.io/stats21220/nest/nest
