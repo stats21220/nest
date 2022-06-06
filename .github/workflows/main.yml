@@ -2,15 +2,15 @@ name: Publish Docker
 
 on:
   push:
-    branches: master
+    branches: master | main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@master | actions/checkout@main
       - name: Publish to registry
-        uses: elgohr/Publish-Docker-Github-Action@master
+        uses: elgohr/Publish-Docker-Github-Action@master | elgohr/Publish-Docker-Github-Action@main
         with:
           repository: stats21220/nest
           registry: docker.pkg.github.com
