@@ -1,21 +1,22 @@
-name: Publish Docker
-
-on:
+name: Publish to Registry
+on:    
+  release:
+      types: [published]
   push:
-    branches: 
+    branches:
       - master
-
+  schedule:
+    - cron: '0 2 * * 0' # Weekly on Sundays at 02:00
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Publish to registy
-        uses: elgohr/Publish-Docker-Github-Action@master
-        with:
-          name: docker.pkg.github.com/stats21220/nest/nest
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          buildargs: MY_FIRST,MY_SECOND
-          buildoptions: "--compress --force-rm"
-          tags: "develop"
+    - uses: actions/checkout@v3
+    - name: Publish to Registry
+      pre: echo ::save-state name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      with:
+        name: myDocker/repository
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        tags: "latest,${{ env.STATE_RELEASE_VERSION }}"
