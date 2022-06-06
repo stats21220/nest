@@ -29,7 +29,7 @@ export class ReviewService {
 		return await this.reviewModel.find({productId: new Types.ObjectId(productId)}).exec();
 	}
 
-	async deleteByProductId(productId: string) {
+	async deleteByProductId(productId: string): Promise<{deletedCount?: number}> {
 		return this.reviewModel.deleteMany({productId: new Types.ObjectId(productId)}).exec();
 	}
 

@@ -1,8 +1,8 @@
 FROM node:16-alpine
-WORKDIR /opt/app
+WORKDIR ./opt/app/
 ADD package.json package.json
 RUN npm install --force
 ADD . .
-RUN npm build
+RUN npm run build
 RUN npm prune --production
 CMD ["node", "./dist/main.js"]
