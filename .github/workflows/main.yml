@@ -21,4 +21,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           workdir: ./opt/app
           buildoptions: docker build -t top-api ./
-          tags: 'develop'
+          tags: 'develops'
