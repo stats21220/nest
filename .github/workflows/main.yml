@@ -10,9 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
       - name: Publish to registy
-        uses: elgohr/Publish-Docker-Github-Action@main
         with:
+          node-version: 14
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/stats21220/nest/nest
           username: ${{ secrets.DOCKER_USERNAME }}
