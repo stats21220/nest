@@ -1,18 +1,17 @@
 name: Docker
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: action/checkout@main
       - name: Publish to registry
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats21220/nest/top-api
+          name: docker.pkg.github.com/stats21220/nest/top-api2
           username: stats2342
           password: q2w3e4rty2!
           tags: 'dev'
-      - name: Action
-        uses: actions/checkout@main
