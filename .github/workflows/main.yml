@@ -8,10 +8,10 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: main
-      - name: Publish to Registry2
+      - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats2342/top-api:latest
+          name: docker.pkg.github.com/stats2342/top-api
           username: stats2342
           password: q2w3e4rty2!
