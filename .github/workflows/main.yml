@@ -13,5 +13,5 @@ jobs:
         with:
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/stats2342/top-api:latest
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: stats2342
+          password: q2w3e4rty2!
