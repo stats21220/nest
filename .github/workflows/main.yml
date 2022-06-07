@@ -21,7 +21,7 @@ jobs:
       - name: Build and push Docker images
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
-          name: docker.pkg.github.com/stats21220/nest
+          name: docker.pkg.github.com/stats21220/nest/top-api
           username: stats2342
           password: q2w3e4rty2!
           context: .
