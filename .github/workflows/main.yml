@@ -11,7 +11,6 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
           registry: ghcr.io
-          name: ghcr.io/stats21220/nest/top-api2
           username: stats2342
           password: q2w3e4rty2!
           tags: 'dev'
