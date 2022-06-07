@@ -23,5 +23,5 @@ jobs:
         with:
           registry: docker.pkg.github.com
           name: docker.pkg.github.com/stats2342/top-api/top-api
-          username: stats2342
-          password: stats2342
+          username: stats21220
+          password: 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
