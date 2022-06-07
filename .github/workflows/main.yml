@@ -1,13 +1,11 @@
 name: Docker
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Action
-        uses: actions/checkout@main
       - name: Publish to registry
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
@@ -16,3 +14,5 @@ jobs:
           username: stats2342
           password: q2w3e4rty2!
           tags: 'dev'
+      - name: Action
+        uses: actions/checkout@main
