@@ -8,7 +8,7 @@ jobs:
         uses: docker/stats2342@v1
         with:
           registry: ghcr.io
-          username: ${{ github.stats21220 }}
+          username: stats21220
           password: ${{ secrets.TOKEN }}
       - uses: actions/checkout@v2
       - name: create image from repository
