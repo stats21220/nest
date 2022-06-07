@@ -12,6 +12,6 @@ jobs:
           password: ${{ secrets.TOKEN }}
       - uses: actions/checkout@v2
       - name: create image from repository
-        run: docker build -t ghcr.io/${{ stats21220 }}/top-api
+        run: docker build -t ghcr.io/stats21220/top-api
       - name: push image to GitHub Container Registry
-        run: docker push ghcr.io/${{ stats21220 }}/top-api:latest
+        run: docker push ghcr.io/stats21220/top-api:latest
