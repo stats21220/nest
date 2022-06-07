@@ -1,18 +1,16 @@
-name: ci
-
+name: Docker
 on:
   push:
-    branches: main
-
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@main
-    - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@main
-      with:
-        name: stas2342/top-api
-        username: stas2342
-        password: q2w3e4rty2!
-  
+      - uses: action/checkout@main
+      - name: Publish to registry
+        uses: elgohr/Publish-Docker-Github-Action@main
+        with:
+          registry: docker.pkg.github.com
+          name: docker.pkg.github.com/stats21220/nest/top-api
+          username: stats2342
+          password: q2w3e4rty2!
