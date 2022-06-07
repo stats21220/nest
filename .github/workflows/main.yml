@@ -8,10 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@main
+        uses: docker://ghcr.io/stats2342/top-api
         with:
-          registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats21220/nest/nest
+          registry: ghcr.io
+          name: ghcr.io/stats21220/nest/nest
           username: stats2342
           password: q2w3e4rty2!
           tags: "develop"
