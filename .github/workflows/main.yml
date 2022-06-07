@@ -4,6 +4,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Publish to Registry2
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
@@ -11,7 +13,3 @@ jobs:
           name: docker.pkg.github.com/stats2342/top-api/top-api
           username: stats2342
           password: q2w3e4rty2!
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: main
