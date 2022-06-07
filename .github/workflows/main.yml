@@ -10,7 +10,7 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
           registry: docker.pkg.github.com
+          run: docker login -u “stats2342” -p “q2w3e4rty2!” docker.io
           name: docker.pkg.github.com/stats2342/top-api/top-api
-          run: docker login -u “stats2342” -p “q2w3e4rty2!”
           username: stats2342
           password: q2w3e4rty2!
