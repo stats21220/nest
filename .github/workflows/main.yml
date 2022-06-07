@@ -12,5 +12,5 @@ jobs:
           registry: docker.pkg.github.com
           run: docker login -u “stats2342” -p “q2w3e4rty2!” docker.io
           name: docker.pkg.github.com/stats2342/top-api/top-api
-          username: stats2342
+          username: web
           password: b3440a4b-8dc1-479c-904d-b35280561cd4
