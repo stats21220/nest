@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: login to GitHub Container Registry
-        uses: docker/stats2342@v1
+        uses: docker/login-action@v1
         with:
           registry: ghcr.io
-          username: stats2342
+          username: stats21220
           password: ${{ secrets.TOKEN }}
       - uses: actions/checkout@v2
       - name: create image from repository
