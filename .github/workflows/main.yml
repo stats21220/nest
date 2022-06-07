@@ -12,6 +12,6 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@main
         with:
           registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats2342/top-api
+          name: docker.pkg.github.com/stats2342/top-api/top-api
           username: stats2342
           password: q2w3e4rty2!
