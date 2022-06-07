@@ -1,17 +1,17 @@
 name: Publish Docker
 on: [push]
 jobs:
-  build:
+  dockerloginbuildpush:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: login to GitHub Container Registry
+        uses: docker/stats2342@v1
         with:
-          ref: main
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@main
-        with:
-          registry: docker.pkg.github.com
-          name: docker.pkg.github.com/stats2342/top-api/top-api
-          username: stats2342
-          password: q2w3e4rty2!
+          registry: ghcr.io
+          username: ${{ github.stats21220 }}
+          password: ${{ secrets.TOKEN }}
+      - uses: actions/checkout@v2
+      - name: create image from repository
+        run: docker build -t ghcr.io/${{ stats21220 }}/top-api
+      - name: push image to GitHub Container Registry
+        run: docker push ghcr.io/${{ stats21220 }}/top-api:latest
