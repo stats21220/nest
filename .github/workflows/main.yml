@@ -1,7 +1,7 @@
 name: Publish Docker
 on: [push]
 jobs:
-  dockerloginbuildpush:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -15,8 +15,3 @@ jobs:
           name: docker.pkg.github.com/stats2342/top-api/top-api
           username: stats2342
           password: q2w3e4rty2!
-      - uses: actions/checkout@v2
-      - name: create image from repository
-        run: docker build -t ghcr.io/stats2342/top-api
-      - name: push image to GitHub Container Registry
-        run: docker push ghcr.io/stats2342/top-api:latest
